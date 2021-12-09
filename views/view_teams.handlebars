@@ -1,0 +1,45 @@
+ 
+ <body>
+     <div>
+            <link rel="stylesheet" href="/styling/index.css"/>
+    </div>
+    <div class = 'center' id="teamsTable">
+        <br><br>
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Team Name</th>
+                    <th>Team Leader</th>
+                    <th>Team Members</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            {{#each tableData}}
+                <tr>
+                    
+                    <td>{{this.teamName}}</td>
+                    <td>{{this.scrumMaster}}</td>
+                    <td>{{this.members}}</td>
+                    <td>
+                        <form method="POST" action="/team_portal">
+                            <input type="hidden" 
+                            id = "teamName"
+                            name="teamName"
+                            value="{{this.teamName}}"
+                            >
+                            <input id="flatbutt" type="submit"
+                            name="submit"
+                            value="Team Portal">                    
+                        </form>
+                        
+                    
+                    </td>
+                </tr>
+            {{/each}}
+
+        </table>
+    </div>
+</body>
+

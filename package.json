@@ -1,0 +1,37 @@
+{
+  "name": "app-service-hello-world",
+  "description": "Simple Hello World Node.js sample for Azure App Service",
+  "version": "0.0.1",
+  "private": true,
+  "license": "MIT",
+  "author": "Microsoft",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "connect-mongo": "^4.6.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.5",
+    "express-session": "^1.17.2",
+    "express-sessions": "^1.0.6",
+    "mongo": "^0.1.0",
+    "mongodb": "^4.1.4",
+    "mongoose": "^6.1.0",
+    "node": "^17.1.0",
+    "passport": "^0.5.0",
+    "passport-google-oauth20": "^2.0.0"
+  },
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sourpatch-Engineers2/Scrum-Stars.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Sourpatch-Engineers2/Scrum-Stars/issues"
+  },
+  "homepage": "https://github.com/Sourpatch-Engineers2/Scrum-Stars#readme"
+}
