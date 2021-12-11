@@ -1,0 +1,82 @@
+<body>
+    <div class="div-view" style="text-align:center;">
+    <div>
+        <link rel="stylesheet" href="/styling/index.css"/>
+    </div>
+
+    <head>
+        <h1>Team Creation</h1> 
+        <p id = 'error' class = 'center'>
+            So... we think you might have made a mistake 
+            when entering your team information. In order for
+            your team to be submitted to the database, here's what 
+            you need: <br>
+            1.) A unique team name  <br>
+            2.) Scrum master and team member emails (spelled
+            correctly) that contain '@lewisu.edu'<br> <br> 
+            Good luck on this next form submission!
+        </p>
+    </head>
+    
+    <form action="/team-form/complete?form=teamform" method="post" id='team_form'>
+    <div id="TeamName" class = 'center'>
+        <input type = 'text' id = 'textbox' class = 'center textbox'
+         placeholder='Enter team name' name="TeamName">
+    </div>
+
+    <div id="ScrumMaster" class = 'center'>
+        <input type = 'text' id = 'textbox' class = 'center textbox'
+         placeholder="Enter scrum master" name="ScrumMaster">
+    </div>
+
+    <div id="MemberList" class='center'>
+        <input type = 'text' id = 'textbox' class = 'center textbox' 
+        onkeyup='AddMember(event)' placeholder='Enter member name'>
+    </div>
+
+    <div id="AddMember" class = 'center'>
+        <button type="button" id = 'flatbutt' class = 'center'
+         onclick="CreateMember()">Add member</button>
+    </div>
+
+    <input type="hidden" id="members" name="members"></p>
+
+    <div id="SubmitButton" class = 'center'>
+            <button type="submit" name="submit" class = 'center'
+             onclick="RecordTeam()">Create Team</button>                    
+    
+    <script>
+        function CreateMember() {
+            var input = document.createElement("input");
+            input.setAttribute('id', 'textbox');
+            input.setAttribute('type', 'text');
+            input.setAttribute('class', 'center textbox');
+            input.setAttribute('onkeyup', 'Addmember(event)');
+            input.setAttribute('placeholder', 'Enter member name');
+            var parent = document.getElementById("MemberList");
+            parent.appendChild(input);
+            linebreak = document.createElement("br");
+            parent.appendChild(linebreak);  
+        }
+
+        
+        function RecordTeam() {
+            var x = document.getElementsByTagName("input");
+            const members = [];
+            for(i = 0; i < x.length; i++) {
+                if (x[i].value != "") {
+                    if (i > 0 || i == x.length-2){
+                        members.push(x[i].value);
+                    }
+                }
+            }
+            document.getElementById("members").value = members
+        }
+    </script>
+    
+    </form>
+    </div>
+    </div>
+    
+    
+</body>

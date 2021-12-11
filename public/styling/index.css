@@ -255,3 +255,7 @@ tr:hover {
     box-shadow: 0 0 20px rgb(255,213,0);
 }
 
+#error {
+    color:rgb(216, 79, 102);
+}
+
