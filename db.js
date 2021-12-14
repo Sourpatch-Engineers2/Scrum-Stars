@@ -4,7 +4,9 @@ const UserM = require('./models/User')
 const TeamM = require('./models/Team')
 const User = require('./models/User')
 
-
+/**
+ * @description establish the connection with the database by using the variable located in /config/config.env
+ */
 module.exports.openConnectionDB = async function openConnectionDB() {
   try {
       const connection = await mongoose.connect(process.env.MONGO_URI)
@@ -14,10 +16,9 @@ module.exports.openConnectionDB = async function openConnectionDB() {
   }
 }
 /**
- * 
+ * @description takes the teamname and will return the file found inside the mondodb
  * @param {string} teamname
  * @returns the team bson file within the db using the query of teamname
- * @description takes the teamname and will return the file found inside the mondodb
  */
 module.exports.loadTeam = async function loadTeam(teamname) {
     const query = {teamName: teamname}
@@ -26,10 +27,8 @@ module.exports.loadTeam = async function loadTeam(teamname) {
 }
 
 /**
- * 
- * @returns an array of all teams in the metatable
  * @description returns all the teams in the table in an array format
- * @todo 
+ * @returns an array of all teams in the metatable
  */
 module.exports.loadAllTeams = async function loadAllTeams() {
   var query = TeamM.find()
@@ -37,11 +36,10 @@ module.exports.loadAllTeams = async function loadAllTeams() {
 }
 
 /**
- * 
+ * @description inserts a new team inside the database with a list of members, duplicate errors are handled here as well
  * @param {string} teamname 
  * @param {list} memberNames 
- * @param {string} scrumMaster
- * @description inserts a new team inside the database with a list of members, duplicate errors are handled here as well. 
+ * @param {string} scrumMaster 
  */
 module.exports.insertTeam = async function insertTeam(teamname, memberEmails, scrumMasterEmail, counter) {
     var validate = false
@@ -71,7 +69,7 @@ module.exports.insertTeam = async function insertTeam(teamname, memberEmails, sc
 /**
  * @description adds new sprint to the team
  * @param {string} teamname 
- * @param {int} sprint number
+ * @param {int} sprint_number
  */
  module.exports.new_sprint = async function new_sprint(teamname, memberData, counter) {
   
@@ -89,7 +87,7 @@ module.exports.insertTeam = async function insertTeam(teamname, memberEmails, sc
  /**
  * @description updates sprint values
  * @param {string} teamname 
- * @param {int} sprint number
+ * @param {int} sprint_number
  */
   module.exports.update_sprint = async function update_sprint(teamname, update_data, sprint) {
   
@@ -105,39 +103,26 @@ module.exports.insertTeam = async function insertTeam(teamname, memberEmails, sc
    }
 
 /**
- * 
- * @param {string} teamname 
  * @description this will delete the file of the teamname specified
+ * @param {string} teamname 
  */
 module.exports.deleteTeam = async function deleteTeam(teamname) {
     const query = {teamName: teamname}
 
-    TeamM.deleteOne(query)
+    await TeamM.deleteOne(query)
     console.log(`${response.team_name} deleted`)
 }
 
-module.exports.new_team = async function new_team() {
-  try {
-        await client.connect()
-        const db = client.db('team_meta')
-        const metatable = db.collection('metatable')
-
-        const query = {team_name: teamname}
-        const team = await metatable.findOne(query)
-    
-
-  } catch (e) {
-    console.error(e)
-  } finally {
-    client.close()
-  }
-}
-
+/**
+ * @description allows you to check the database for an email
+ * @param {String} emailToCheck 
+ * @returns boolean
+ */
 module.exports.check_email = async function check_email(emailToCheck) {
   const validate = false
   const query = {email: emailToCheck}
 
-  if(UserM.findOne(query)) {
+  if(await UserM.findOne(query)) {
     validate = true
   }
   return validate

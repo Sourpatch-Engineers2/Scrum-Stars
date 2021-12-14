@@ -29,7 +29,7 @@ router.get('/', (req, res) => {
 /**
  * @description Team Portal
  * @route GET /team_portal
- * @param ensureAuth middleware that will not allow any unauthenticated users through but redirect them to landing page. 
+ * @param ensureAuth
  */
 router.get('/team_portal', ensureAuth, (req, res) => {
     res.render('team_portal', {
@@ -41,7 +41,7 @@ router.get('/team_portal', ensureAuth, (req, res) => {
 /**
  * @description Team Form
  * @route GET /team_form
- * @param ensureAuth middleware that will not allow any unauthenticated users through but redirect them to landing page. 
+ * @param ensureAuth
  */
  router.get('/team_form', ensureAuth, (req, res) => {
     res.render('team_form', {
@@ -52,7 +52,7 @@ router.get('/team_portal', ensureAuth, (req, res) => {
 /**
  * @description View Teams
  * @route Get /view_teams
- * @param @param ensureAuth middleware that will not allow any unauthenticated users through but redirect them to landing page.
+ * @param ensureAuth
  */
 router.get('/view_teams', ensureAuth, (req, res) => {
     var logged;

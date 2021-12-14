@@ -2,8 +2,10 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy
 const mongoose = require('mongoose')
 const User = require('../models/User')
 
-
 module.exports = function(passport) {
+  /**
+   * @description create the new Strategy with the information stored in /config/config.env
+   */
     passport.use(new GoogleStrategy(
     {
         clientID: process.env.GOOGLE_CLIENT_ID,
@@ -12,7 +14,7 @@ module.exports = function(passport) {
     },
 
     /**
-     * 
+     * @description create the new user based on the profile found of that google account and push it to the database
      * @param {*} accessToken 
      * @param {*} refreshToken 
      * @param {*} profile - the profile of the user we return
@@ -42,7 +44,9 @@ module.exports = function(passport) {
         console.error(e)
       }
     }))
-
+    /**
+     * @description used to store the session id of the user in a cookie to tell the application they are authenticated between pages
+     */
     passport.serializeUser((user, done) => {
         done(null, user.id);
       });

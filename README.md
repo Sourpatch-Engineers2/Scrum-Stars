@@ -1,7 +1,7 @@
 Informational
 =============
 Authors: Bryan Gabe, Daniel Tujo, Joel Feddes, Alex Rodriguez, Ryan Corrigan, Matthew Beaulieu
-Last Updated: 12/13/2021  
+Last Updated: 12/14/2021  
 Project: Scrum-Stars
 Course: Software Engineering (CPSC470-1) with Prof. Eric Pogue
 
@@ -32,3 +32,8 @@ Execution Instructions
 ----------------------
 1. Open a terminal, navigate to the directory containing `package.json`, and run `node index.js`
 2. Open a browser and navigate to `localhost:3000`
+
+Future Use
+----------------------
+1. The database information under `config/config.env` will need to be updated to your own database
+2. The Google authentication keys will also need to be updated under `config/config.env` to your own keys
